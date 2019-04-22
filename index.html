@@ -25,6 +25,7 @@
             <div class="container">
                 <h1 class="display-4">Catch me if you can!</h1>
                 <p>Here is a train Scheduler to help you out!</p>
+                <h2 id="currentTime">Current Time: <span id="timer"></span></h2>
             </div>
         </div>
 
@@ -33,7 +34,7 @@
                 <h3>Current Train Schedule</h3>
             </div>
             <div class="panel-body">
-                <table class="table">
+                <table class="table" >
                     <thead>
                         <tr>
                             <th>Train Name</th>
@@ -45,7 +46,7 @@
                     </thead>
                 </table>
 
-                <tbody id="add-row">
+                <tbody id="new-train">
                 </tbody>
 
                 </table>
@@ -64,25 +65,25 @@
                     <div class="form-group">
                         <label for="text">Train Name</label>
 
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" class="form-control" id="addName">
                     </div>
 
                     <div class="form-group">
                         <label for="text">Destination</label>
-                        <input type="text" class="form-control" id="destinations">
+                        <input type="text" class="form-control" id="addDestinations">
                     </div>
 
                     <div class="form-group">
                         <label for="text">First Train Time (HH:mm - Military Time)</label>
-                        <input type="text" class="form-control" id="time">
+                        <input type="text" class="form-control" id="addTime">
                     </div>
 
                     <div class="form-group">
                         <label for="text">Frequency(min)</label>
-                        <input type="text" class="form-control" id="frequency">
+                        <input type="text" class="form-control" id="addFrequency">
                     </div>
 
-                    <button type="submit" id="add-train" class="btn btn-primary" id="addTrain">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="submitTrain">Submit</button>
                 </form>
             </div>
         </div>
@@ -127,9 +128,11 @@
 
 
 
-
-
+    
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-database.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
