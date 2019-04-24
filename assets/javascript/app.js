@@ -38,7 +38,7 @@ var dataRef = new Firebase(url);
 
         
 
-//Show and update current time. Use setInterval method to update time.
+//Show and update current time. Use setInterval method to update time. not working!!
 function displayRealTime() {
         setInterval(function(){
             $('#recent-time').html(moment().format('hh:mm A'))
@@ -72,6 +72,7 @@ $("#submitTrain").on("click", function () {
                 //return false;
 
         }
+       
         //this should push the information that is typed in
         trains.ref().push(recentTrn);
 
