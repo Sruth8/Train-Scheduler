@@ -7,16 +7,13 @@ font-family: Arial, Helvetica, sans-serif
 
 
 .jumbotron {
-    background-color: rgb(215, 215, 236);
-    color: #0b1542;
-    padding: 20px;
-    padding-bottom: 30px;
+    background-image: url("https://png2.kisspng.com/sh/4344b16fa3ce84bdb798be41f90cace9/L0KzQYm3VsMxN5xmkZH0aYP2gLBuTgRzaZpzReRqaXywhMPojwNxd6N5ReRqcHnnPcX5gf50caUye95ycD3kgsW0lQJidqQyTdQ8N3a1RYG5VMJiO2czSKo5OEW4RYS4VcMxO2o4SagDMUS7QXB3jvc=/kisspng-train-rail-transport-rapid-transit-clip-art-trans-5b37f250242a36.0808555315303931681481.png") ! important;
+    color: black;
+    font: bold;
+    /* padding: 20px;
+    padding-bottom: 30px; */
 }
 
-
-/* .p {
-    font
-} */
 
 
 

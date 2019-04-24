@@ -30,11 +30,24 @@ var dataRef = new Firebase(url);
 
 // }
 
-setInterval(function (startTime) {
-        $("#timer").html(moment().format('hh:mm a'))
-}, 1000);
+
+// setInterval(function(){
+//         duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
+//         $('.countdown').text(moment(duration.asMilliseconds()).format('H[h]:mm[m]:ss[s]'));
+//       }, interval);
+
+        
+
+//Show and update current time. Use setInterval method to update time.
+function displayRealTime() {
+        setInterval(function(){
+            $('#recent-time').html(moment().format('hh:mm A'))
+          }, 1000);
+        }
+        displayRealTime();
 
 
+//this should push the information that is typed in after clicking on the submit button
 $("#submitTrain").on("click", function () {
         var name = $("#addName").val().trim();
         var destinations = $("#addDestinations").val().trim();
@@ -43,50 +56,44 @@ $("#submitTrain").on("click", function () {
         var frequency = $("#addFrequency").val().trim();
 
         // add storage varibles
-        var submitTrain = {
+        var recentTrn = {
 
                 name: name,
                 destinations: destinations,
                 time: time,
                 frequency: frequency
-    
-                
+
+
                 // console.log(name);
                 // console.log(destinations);
                 // console.log(time);
                 // console.log(frequency);
 
-
-
                 //return false;
 
+        }
+        //this should push the information that is typed in
+        trains.ref().push(recentTrn);
 
-        };
+        //suppose to clear data from user
+        $("#name").val("");
+        $("#destinations").val("");
+        $("#time").val("");
+        $("#frequency").val("");
+
+
+        return false;
+
 
 })
 
 
-trains.ref().push(recentTrn);
 
 
 
 
 
-
-//suppose to clear data from user
-$("#name").val("");
-$("#destinations").val("");
-$("#time").val("");
-$("#frequency").val("");
-
-
-//return false;
-
-
-
-
-
-// this is the snapshot the pushes the value of the object
+// this is the snapshot that pushes the value of the object
 //val will return the value of the database
 trains.ref()
         .on("child_added", function (snapshot) {
@@ -109,15 +116,10 @@ trains.ref()
                 var arrival = moment().add(minutes, "m").format("hh:mm A");
 
 
-                console.log(remainder);
-                console.log(minutes);
-                console.log(arrival);
+               
 
 
-
-
-
-                $("#new-train > tBody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td><td>");
+                $("#new-train > tBody").append("<tr><td>" + name + "</td><td>" + destinations + "</td><td>" + frequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td><td>");
 
         })
 
