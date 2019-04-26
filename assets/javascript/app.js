@@ -17,7 +17,7 @@ firebase.initializeApp(config);
 var trains = firebase.database();
 
 var url = "https://train-scheduler-10db5.firebaseio.com/"
-var dataRef = new Firebase(url);
+// var dataRef = new firebase(url);
 
 
 // add storage varibles
@@ -36,19 +36,20 @@ var dataRef = new Firebase(url);
 //         $('.countdown').text(moment(duration.asMilliseconds()).format('H[h]:mm[m]:ss[s]'));
 //       }, interval);
 
-        
+
 
 //Show and update current time. Use setInterval method to update time. not working!!
 function displayRealTime() {
-        setInterval(function(){
-            $('#recent-time').html(moment().format('hh:mm A'))
-          }, 1000);
-        }
-        displayRealTime();
+        setInterval(function () {
+                $('#recent-time').html(moment().format('hh:mm A'))
+        }, 1000);
+}
+displayRealTime();
 
 
 //this should push the information that is typed in after clicking on the submit button
-$("#submitTrain").on("click", function () {
+$("#submitTrain").on("click", function (event) {
+        event.preventDefault();
         var name = $("#addName").val().trim();
         var destinations = $("#addDestinations").val().trim();
         var time = moment($("#addTime").val().trim(), "HH:mm").subtract(10, "years").format("X");
@@ -61,8 +62,9 @@ $("#submitTrain").on("click", function () {
                 name: name,
                 destinations: destinations,
                 time: time,
-                frequency: frequency
-
+                frequency: frequency,
+                arrival: arrival,
+                minutes: minutes
 
                 // console.log(name);
                 // console.log(destinations);
@@ -72,7 +74,7 @@ $("#submitTrain").on("click", function () {
                 //return false;
 
         }
-       
+
         //this should push the information that is typed in
         trains.ref().push(recentTrn);
 
@@ -106,10 +108,9 @@ trains.ref()
 
                 //  moment().unix();
                 //moment().diff(Moment|String|Number|Date|Array, String);
-                var remainder = moment().diff(moment.unix(firstTrain), "minutes") % frequency;
+                var remainder = moment().diff(moment.unix(time), "minutes") % frequency;
 
                 var minutes = frequency - remainder;
-
 
                 //moment().format("dddd, MMMM Do YYYY, h:mm:ss a"); // "Sunday, February 14th 2010, 3:25:50 pm"
                 // A = AM PM
@@ -117,10 +118,10 @@ trains.ref()
                 var arrival = moment().add(minutes, "m").format("hh:mm A");
 
 
-               
 
 
-                $("#new-train > tBody").append("<tr><td>" + name + "</td><td>" + destinations + "</td><td>" + frequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td><td>");
+
+                $("#new-train > tbody").append("<tr><td>" + name + "</td><td>" + destinations + "</td><td>" + frequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td><td>");
 
         })
 
