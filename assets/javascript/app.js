@@ -16,7 +16,7 @@ firebase.initializeApp(config);
 //this links to firebase
 var trains = firebase.database();
 
-var url = "https://train-scheduler-10db5.firebaseio.com/"
+//var url = "https://train-scheduler-10db5.firebaseio.com/"
 // var dataRef = new firebase(url);
 
 
@@ -53,18 +53,19 @@ $("#submitTrain").on("click", function (event) {
         var name = $("#addName").val().trim();
         var destinations = $("#addDestinations").val().trim();
         var time = moment($("#addTime").val().trim(), "HH:mm").subtract(10, "years").format("X");
+        
 
         var frequency = $("#addFrequency").val().trim();
 
-        // add storage varibles
+        // add storage variables
         var recentTrn = {
 
                 name: name,
                 destinations: destinations,
                 time: time,
                 frequency: frequency,
-                arrival: arrival,
-                minutes: minutes
+              // arrival: arrival,
+              //  minutes: minutes
 
                 // console.log(name);
                 // console.log(destinations);
