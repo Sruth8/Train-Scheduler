@@ -17,4 +17,4 @@ Technologies used
 
 
 ![Image of Train Scheduler](/images/TrainS.PNG)
-![Image of Train Scheduler](/images/TrainSPNG1.PNG)
+![Image of Train Scheduler](/images/TrainS.PNG1.PNG)
